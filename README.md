@@ -1,5 +1,7 @@
 # Docker container for Arduino development
 
-This container provides an installation of the Arduino.cc application and a virtual X11 server.
+This container provides an installation of the Arduino.cc application
 
-It is designed for use in a CI environment, but can be used wherever the Arduino toolchain is needed.
+```
+docker run -ti --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix docker-arduino
+```
