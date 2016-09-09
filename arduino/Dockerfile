@@ -14,7 +14,7 @@ ARG HOST_UID=1000
 ARG HOST_GID=1000
 
 RUN groupadd -g ${HOST_GID} devel && \
-    useradd -u ${HOST_UID} -m -g devel devel && \
+    useradd -u ${HOST_UID} -m -g devel -G dialout devel && \
     usermod -s /bin/bash devel
 
 
