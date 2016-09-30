@@ -17,12 +17,11 @@ RUN groupadd -g ${HOST_GID} devel && \
     useradd -u ${HOST_UID} -m -g devel -G dialout devel && \
     usermod -s /bin/bash devel
 
-
-ENV ARDUINO_IDE_VERSION 1.6.11
-RUN (wget -q -O- https://downloads.arduino.cc/arduino-${ARDUINO_IDE_VERSION}-linux64.tar.xz \
+ENV ARDUINO_IDE_VERSION 1.7.10
+RUN (wget -q -O- http://download.arduino.org/IDE/${ARDUINO_IDE_VERSION}/arduino-${ARDUINO_IDE_VERSION}.org-linux64.tar.xz \
 	| tar xJC /usr/local/share \
-	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION} /usr/local/share/arduino \
-	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION}/arduino /usr/local/bin/arduino)
+	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION}-linux64 /usr/local/share/arduino \
+	&& ln -s /usr/local/share/arduino-${ARDUINO_IDE_VERSION}-linux64/arduino /usr/local/bin/arduino)
 
 COPY ./start-session.sh /usr/local/bin/start-session
 
